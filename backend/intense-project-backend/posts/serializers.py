@@ -2,6 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 
+from .models import Post, Category
+
 
 User = get_user_model()
 
@@ -33,3 +35,11 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+
+class PostSerializers(serializers.ModelSerializer):
+    """
+    Сериализатор для статей.
+    """
+    class Meta:
+        model = Post

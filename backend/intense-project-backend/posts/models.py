@@ -6,7 +6,7 @@ class User(AbstractUser):
     """
     Модель пользователя.
     """
-    pass
+    image = models.CharField('Аватар', max_length=500, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Пользователь'
@@ -14,6 +14,25 @@ class User(AbstractUser):
 
     def __str__(self):
         return f'{self.username}'
+
+
+class Post(models.Model):
+    """
+    Модель для статей.
+    """
+    image = models.CharField('Избражение', max_length=500)
+    title = models.CharField('Название', max_length=128)
+    desc = models.TextField('Основной текст')
+    author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE, related_name='posts')
+    category = models.ForeignKey('Category', verbose_name='Категория', on_delete=models.SET_NULL, null=True, related_name='posts')
+    created_at = models.DateTimeField('Время создания', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
+
+    def __str__(self):
+        return f'{self.title} - {self.category} | {self.author}'
 
 
 class Category(models.Model):
@@ -37,6 +56,11 @@ class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='liked_posts')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
 
+    class Meta:
+        unique_together = ('user', 'post')
+        verbose_name = 'Лайк'
+        verbose_name_plural = 'Лайки'
+
 
 class Favorites(models.Model):
     """
@@ -44,3 +68,8 @@ class Favorites(models.Model):
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorite_posts')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='favorites')
+
+    class Meta:
+        unique_together = ('user', 'post')
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранное'

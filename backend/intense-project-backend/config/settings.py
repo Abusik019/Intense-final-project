@@ -28,8 +28,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'drf_yasg',
 
-    'users',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -102,7 +103,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'posts.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
