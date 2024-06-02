@@ -41,8 +41,8 @@ class PostSerializers(serializers.ModelSerializer):
     """
     Сериализатор для статей.
     """
-    author = serializers.ReadOnlyField()
+    author = serializers.ReadOnlyField(source='author.username')
 
     class Meta:
         model = Post
-        fields = ['image', 'title', 'desc', 'category', '']
+        fields = ['title', 'desc', 'image', 'category', 'author', 'created_at']
