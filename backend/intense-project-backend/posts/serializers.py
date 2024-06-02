@@ -37,11 +37,21 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для категорий.
+    """
+    class Meta:
+        model = Category
+        fields = ['id', 'title']
+
+
 class PostSerializers(serializers.ModelSerializer):
     """
     Сериализатор для статей.
     """
     author = serializers.ReadOnlyField(source='author.username')
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), many=True)
 
     class Meta:
         model = Post

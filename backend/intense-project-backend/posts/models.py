@@ -24,15 +24,17 @@ class Post(models.Model):
     title = models.CharField('Название', max_length=128)
     desc = models.TextField('Основной текст')
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE, related_name='posts')
-    category = models.ForeignKey('Category', verbose_name='Категория', on_delete=models.SET_NULL, null=True, related_name='posts')
+    category = models.ManyToManyField('Category', verbose_name='Категория', related_name='posts')
     created_at = models.DateTimeField('Время создания', auto_now_add=True)
 
     class Meta:
+        ordering = ['-created_at']
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 
     def __str__(self):
-        return f'{self.title} - {self.category} | {self.author}'
+        categories = ", ".join(category.title for category in self.category.all())
+        return f'{self.title} - {categories} | {self.author}'
 
 
 class Category(models.Model):
