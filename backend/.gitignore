@@ -4,6 +4,7 @@ __pycache__/
 
 *.so
 
+media/
 .Python
 build/
 develop-eggs/

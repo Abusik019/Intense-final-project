@@ -1,15 +1,20 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import RegisterView, PostViewSet, GetCategoryList
+from .views import UserViewSet, PostViewSet, GetCategoryList
 
 
-router = DefaultRouter()
-router.register(r'posts', PostViewSet)
+posts_router = DefaultRouter()
+posts_router.register(r'posts', PostViewSet)
+
+users_router = DefaultRouter()
+posts_router.register(r'users', UserViewSet)
 
 
 urlpatterns = [
-    path('register/', RegisterView.as_view(), name='register'),
-    path('', include(router.urls)),
+    path('users/', include(users_router.urls)),
+
+    path('posts/', include(posts_router.urls)),
+
     path('get_categories', GetCategoryList.as_view())
 ]
