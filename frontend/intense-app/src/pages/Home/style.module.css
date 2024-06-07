@@ -1,9 +1,74 @@
 .homePage{
     width: 1280px;
-    height: 100vh;
+    height: fit-content;
 
-    border: 1px solid black;
-
-    padding: 2rem;
+    padding: 10px;
     box-sizing: border-box;
+
+    margin-bottom: 100px;
+}
+
+.homeContent{
+    height: fit-content;
+}
+
+.homeBigImg{
+    width: 100%;
+    margin-top: 35px;
+}
+
+.topArticles, .newArticles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topArticlesTitleBlock, .newArticlesTitleBlock{
+    margin-top: 40px;
+    width: 289px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.topArticlesTitleBlock > h1, .newArticlesTitleBlock > h1{
+    font-size: 42px;
+}
+
+.decorLine{
+    width: 70%;
+    margin: 0 auto;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.newArticles{
+    margin-top: 30px;
+}
+
+.seeAllBtn{
+    background-color: transparent;
+    border: 2px solid black;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 277px;
+    height: 56px;
+
+    text-align: center;
+
+    padding: 0;
+
+    transition: all .3s ease;
+
+    margin-top: 40px;
+
+    font-size: 20px
+}
+
+.seeAllBtn:hover{
+    background-color: black;
+    color: white;
 }

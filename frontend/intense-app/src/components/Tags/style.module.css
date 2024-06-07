@@ -1,0 +1,27 @@
+.tagsTitle{
+    font-size: 20px;
+    font-weight: 700;
+
+    margin-bottom: 40px;
+}
+
+.tags{
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tags > li{
+    cursor: pointer;
+}
+
+.tags > li:hover{
+    text-decoration: underline;
+}
+
+.tagsContainer{
+    display: flex;
+    flex-direction: column;
+}
