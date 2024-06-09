@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
 
+    'users',
     'posts',
 ]
 
@@ -105,7 +106,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTH_USER_MODEL = 'posts.User'
+AUTH_USER_MODEL = 'users.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

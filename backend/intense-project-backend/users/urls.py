@@ -1,15 +1,14 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import PostViewSet, GetCategoryList
+from .views import UserViewSet, UpdateUser
 
 
 router = DefaultRouter()
-router.register(r'', PostViewSet)
+router.register(r'', UserViewSet)
 
 
 urlpatterns = [
     path('', include(router.urls)),
-
-    path('get_categories', GetCategoryList.as_view())
+    path('<int:pk>', UpdateUser.as_view())
 ]

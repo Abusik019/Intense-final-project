@@ -3,26 +3,14 @@ from rest_framework.generics import ListAPIView
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
-from rest_framework import mixins
 
-from .serializers import UserSerializer, PostSerializers, CategorySerializer
+from .serializers import PostSerializers, CategorySerializer
 from .permisions import ReadOnlyOrIsAuthorOrAdmin
 from .models import Post, Category
 from .filters import PostFilter
 
 
 User = get_user_model()
-
-
-class UserViewSet(mixins.CreateModelMixin,
-                  mixins.RetrieveModelMixin,
-                  mixins.UpdateModelMixin,
-                  viewsets.GenericViewSet):
-    """
-    API endpoint для регистрации пользователя.
-    """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 
 class PostViewSet(viewsets.ModelViewSet):
