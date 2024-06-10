@@ -62,3 +62,20 @@ input{
   border: none;
   outline: none;
 }
+
+.ant-row.ant-form-item-row.css-dev-only-do-not-override-3rel02{
+  justify-content: center;
+}
+
+.ant-form-item.css-dev-only-do-not-override-3rel02{
+  display: flex;
+  justify-content: center;
+}
+
+.ant-row.ant-form-item-row.css-dev-only-do-not-override-3rel02{
+  width: 200px;
+}
+
+:where(.css-dev-only-do-not-override-3rel02).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture .ant-upload-list-item-error, :where(.css-dev-only-do-not-override-3rel02).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture-card .ant-upload-list-item-error, :where(.css-dev-only-do-not-override-3rel02).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture-circle .ant-upload-list-item-error {
+  border-color: #000000;
+}

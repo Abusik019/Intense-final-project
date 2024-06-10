@@ -1,0 +1,99 @@
+.signUp{
+    width: 1280px;
+    height: 100vh;
+
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.signUpContainer{
+    height: calc(100% - 70px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUpForm{
+    width: 324px;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.signUpForm > h1{
+    font-family: "Libre Baskerville", serif;
+    font-size: 33px;
+    font-weight: 700;
+}
+
+.signUpForm > p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 64px;
+}
+
+.signUpForm > input{
+    width: 324px;
+    height: 58px;
+
+    padding: 10px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    background-color: #F8F8F8;
+
+    font-size: 16px;
+    color: #1C1C1C80;
+
+    margin-top: 15px;
+}
+
+.inputUsername{
+    background-image: url('../../assets/user.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 12.5px;
+}
+
+.inputEmail{
+    background-image: url('../../assets/email.png');
+    background-repeat: no-repeat;
+    background-size: 26px;
+    background-position: 12.5px;
+}
+
+.inputPassword{
+    background-image: url('../../assets/key.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 12.5px;
+}
+
+.startBtn{
+    width: 323px;
+    height: 58px;
+
+    margin-top: 15px;
+
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+
+    font-size: 20px;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+
+    text-align: center;
+
+    padding: 0;
+
+    transition: all .3s ease;
+}
+
+.startBtn:hover{
+    background-color: black;
+    color: white;
+}

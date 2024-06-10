@@ -9,10 +9,11 @@ export const Header = () => {
       <li className={styles.headerFirstHalf}>
         <img src={logo} alt="logo"/>
         <NavLink to='/'><div>Home</div></NavLink>
-        <div>Articles</div>
+        <NavLink to='/all-articles'><div>Articles</div></NavLink>
+        <NavLink to='/favorites-articles'><div>Favorites</div></NavLink>
       </li>
       <li className={styles.headerSecondHalf}>
-        <button className={styles.searchBtn}><img src={search} alt="search"/></button>
+        <NavLink to='/search'><button className={styles.searchBtn}><img src={search} alt="search"/></button></NavLink>
         <NavLink to='/login'><button className={styles.loginBtn}>Login</button></NavLink>
       </li>
     </ul>
