@@ -15,7 +15,12 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'image', 'password', 'password_again']
+        fields = [
+            'id', 'username', 'email',
+            'first_name', 'last_name', 'about_me',
+            'link', 'tg_link', 'linkedin_link',
+            'image', 'password', 'password_again'
+        ]
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password_again']:
@@ -30,6 +35,10 @@ class UserSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
+            about_me=validated_data['about_me'],
+            link=validated_data['link'],
+            tg_link=validated_data['tg_link'],
+            linkedin_link=validated_data['linkedin_link'],
         )
         if image:
             user.image = image
@@ -44,4 +53,8 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'image']
+        fields = [
+            'id', 'username', 'email',
+            'first_name', 'last_name', 'about_me',
+            'link', 'tg_link', 'linkedin_link', 'image'
+        ]
