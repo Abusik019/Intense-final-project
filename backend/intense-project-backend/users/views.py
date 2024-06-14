@@ -20,9 +20,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'destroy':
-            self.permission_classes = [IsAuthenticated, IsAdminOrSelf]
+            self.permission_classes = [IsAdminOrSelf]
         elif self.action == 'update':
-            self.permission_classes = [IsAuthenticated, IsOwner]
+            self.permission_classes = [IsOwner]
         elif self.action == 'get_me':
             self.permission_classes = [IsAuthenticated]
         else:
