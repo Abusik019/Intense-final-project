@@ -22,6 +22,7 @@ class PostSerializer(serializers.ModelSerializer):
     like_count = serializers.SerializerMethodField()
     is_liked = serializers.SerializerMethodField()
     is_favorite = serializers.SerializerMethodField()
+    created_at = serializers.ReadOnlyField()
 
     class Meta:
         model = Post
