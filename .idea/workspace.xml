@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/email_senders.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/templates/reply_email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/templates/review_created_email.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,17 +48,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.manage.py.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/xacla/Desktop/Work/Python/Django_projects/final-project"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.manage.py.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/xacla/Desktop/Work/Python/Django_projects/prod_college_API&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\xacla\Desktop\Work\Python\Django_projects\final-project\backend\intense-project-backend" />
@@ -218,7 +211,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718389233070</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary=".">
+      <option name="closed" value="true" />
+      <created>1718456280086</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1718456280086</updated>
+    </task>
+    <task id="LOCAL-00014" summary=".">
+      <option name="closed" value="true" />
+      <created>1718456342979</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1718456342979</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
