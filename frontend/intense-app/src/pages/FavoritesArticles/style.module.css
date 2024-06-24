@@ -1,0 +1,49 @@
+.favoritesArticles{
+    width: 1280px;
+    height: fit-content;
+
+    padding: 10px;
+    box-sizing: border-box;
+
+    margin-bottom: 100px;
+}
+
+.favoritesArticlesContainer{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 50px;
+}
+
+.favoritesArticlesTitleBlock{
+    margin-top: 40px;
+    width: 289px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.favoritesArticlesTitleBlock > h1{
+    font-size: 42px;
+    text-wrap: nowrap;
+}
+
+.decorLine{
+    width: 70%;
+    margin: 0 auto;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.favoritesArticlesContent{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+}

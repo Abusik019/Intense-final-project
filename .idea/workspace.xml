@@ -13,6 +13,13 @@
       <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/assets/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/main.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,114 +122,12 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment="" />
-      <created>1717064440875</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1717064440875</updated>
+    <task id="Manage: runserver" summary="Manage: runserver">
+      <updated>1687129320000</updated>
+      <created>1687129320000</created>
+      <branch>main</branch>
+      <changelist name="Changes" id="a22553b6-c9f8-4aba-8070-5d98979277cf" comment="." />
+      <option name="NUMBER" value="" />
     </task>
-    <task id="LOCAL-00001" summary=".">
-      <option name="closed" value="true" />
-      <created>1717109355367</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1717109355367</updated>
-    </task>
-    <task id="LOCAL-00002" summary=".">
-      <option name="closed" value="true" />
-      <created>1717173070196</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1717173070196</updated>
-    </task>
-    <task id="LOCAL-00003" summary=".">
-      <option name="closed" value="true" />
-      <created>1717326933243</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1717326933243</updated>
-    </task>
-    <task id="LOCAL-00004" summary=".">
-      <option name="closed" value="true" />
-      <created>1717336022506</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1717336022506</updated>
-    </task>
-    <task id="LOCAL-00005" summary=".">
-      <option name="closed" value="true" />
-      <created>1717369147547</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1717369147547</updated>
-    </task>
-    <task id="LOCAL-00006" summary=".">
-      <option name="closed" value="true" />
-      <created>1717370236680</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1717370236680</updated>
-    </task>
-    <task id="LOCAL-00007" summary=".">
-      <option name="closed" value="true" />
-      <created>1717720659029</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1717720659029</updated>
-    </task>
-    <task id="LOCAL-00008" summary=".">
-      <option name="closed" value="true" />
-      <created>1717938172097</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1717938172097</updated>
-    </task>
-    <task id="LOCAL-00009" summary=".">
-      <option name="closed" value="true" />
-      <created>1718086669895</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1718086669895</updated>
-    </task>
-    <task id="LOCAL-00010" summary=".">
-      <option name="closed" value="true" />
-      <created>1718298461851</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1718298461851</updated>
-    </task>
-    <task id="LOCAL-00011" summary=".">
-      <option name="closed" value="true" />
-      <created>1718324051093</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1718324051093</updated>
-    </task>
-    <task id="LOCAL-00012" summary=".">
-      <option name="closed" value="true" />
-      <created>1718389233070</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1718389233070</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
-    <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
