@@ -1,30 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
 
 
-class User(AbstractUser):
-    """
-    Модель пользователя.
-    """
-    image = models.CharField('Аватар', max_length=500, blank=True, null=True)
-
-    class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
-
-    def __str__(self):
-        return f'{self.username}'
+User = get_user_model()
 
 
 class Post(models.Model):
     """
     Модель для статей.
     """
-    image = models.CharField('Избражение', max_length=500)
+    image = models.ImageField('Избражение', upload_to='images/')
     title = models.CharField('Название', max_length=128)
     desc = models.TextField('Основной текст')
+    time_to_read = models.CharField('Время на прочтение', max_length=100, blank=True, null=True)
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE, related_name='posts')
-    category = models.ManyToManyField('Category', verbose_name='Категория', related_name='posts')
+    category = models.ForeignKey('Category', verbose_name='Категория', on_delete=models.SET_NULL, related_name='posts', null=True)
     created_at = models.DateTimeField('Время создания', auto_now_add=True)
 
     class Meta:
@@ -33,8 +23,7 @@ class Post(models.Model):
         verbose_name_plural = 'Статьи'
 
     def __str__(self):
-        categories = ", ".join(category.title for category in self.category.all())
-        return f'{self.title} - {categories} | {self.author}'
+        return f'{self.title} - {self.category} | {self.author}'
 
 
 class Category(models.Model):
@@ -63,6 +52,9 @@ class Likes(models.Model):
         verbose_name = 'Лайк'
         verbose_name_plural = 'Лайки'
 
+    def __str__(self):
+        return f'{self.user.username} поставил лайк {self.post.title}'
+
 
 class Favorites(models.Model):
     """
@@ -75,3 +67,6 @@ class Favorites(models.Model):
         unique_together = ('user', 'post')
         verbose_name = 'Избранное'
         verbose_name_plural = 'Избранное'
+
+    def __str__(self):
+        return f'{self.user.username} добавил в избранное {self.post.title}'

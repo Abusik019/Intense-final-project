@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Вам ответили на комментарий!</title>
+</head>
+<body>
+    <h1 style="color: red;">Вам ответили на комментарий!</h1>
+    <h2>{{ author_username }} ответил(a) на ваш комментарий под постом "{{ post }}"</h2>
+    <div>
+        <h3>{{ text }}</h3>
+        <p>{{ created_at }}</p>
+        <a href="http://127.0.0.1:8000/api/v1/reviews/{{ post_id }}"><button style="width: 300px; height: 40px; margin: 0 auto;">Посмотреть</button></a>
+    </div>
+</body>
+</html>

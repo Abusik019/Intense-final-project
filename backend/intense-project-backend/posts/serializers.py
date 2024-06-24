@@ -1,40 +1,6 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
-from django.contrib.auth.password_validation import validate_password
 
-from .models import Post, Category
-
-
-User = get_user_model()
-
-
-class UserSerializer(serializers.ModelSerializer):
-    """
-    Сериализатор пользователя.
-    """
-    password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
-    password_again = serializers.CharField(write_only=True, required=True)
-
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'password', 'password_again']
-
-    def validate(self, attrs):
-        if attrs['password'] != attrs['password_again']:
-            raise serializers.ValidationError({'password': 'Пароли не совпадают'})
-        return attrs
-
-    def create(self, validated_data):
-        validated_data.pop('password_again')
-        user = User.objects.create(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            first_name=validated_data.get('first_name'),
-            last_name=validated_data.get('last_name')
-        )
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
+from .models import Post, Category, Likes, Favorites
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -46,13 +12,47 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'title']
 
 
-class PostSerializers(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     """
     Сериализатор для статей.
     """
     author = serializers.ReadOnlyField(source='author.username')
-    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), many=True)
+    category = CategorySerializer(read_only=True)
+    category_id = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), source='category', write_only=True)
+    like_count = serializers.SerializerMethodField()
+    is_liked = serializers.SerializerMethodField()
+    is_favorite = serializers.SerializerMethodField()
+    created_at = serializers.ReadOnlyField()
 
     class Meta:
         model = Post
-        fields = ['title', 'desc', 'image', 'category', 'author', 'created_at']
+        fields = [
+            'id', 'title', 'desc',
+            'time_to_read', 'image', 'category',
+            'like_count', 'is_liked', 'is_favorite',
+            'category_id', 'author', 'created_at'
+        ]
+
+    def get_like_count(self, obj):
+        """
+        Метод для отображения количества лайков
+        """
+        return obj.likes.count()
+
+    def get_is_liked(self, obj):
+        """
+        Метод для отображения того, лайкнул ли пользователь статью.
+        """
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return obj.likes.filter(user=user).exists()
+        return False
+
+    def get_is_favorite(self, obj):
+        """
+        Метод для отображения того, добавил ли пользователь в избранное статью.
+        """
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return obj.favorites.filter(user=user).exists()
+        return False
