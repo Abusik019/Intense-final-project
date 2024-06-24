@@ -5,6 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment="." />
+    <list default="true" id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/email_senders.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/templates/reply_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/templates/review_created_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/assets/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/main.jsx" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,12 +123,12 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment="" />
-      <created>1717064440875</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1717064440875</updated>
+    <task id="Manage: runserver" summary="Manage: runserver">
+      <updated>1687129320000</updated>
+      <created>1687129320000</created>
+      <branch>main</branch>
+      <changelist name="Changes" id="a22553b6-c9f8-4aba-8070-5d98979277cf" comment="." />
+      <option name="NUMBER" value="" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
