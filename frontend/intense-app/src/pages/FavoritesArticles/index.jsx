@@ -84,7 +84,6 @@ const allArticles = [
 function FavoritesArticles() {
   return (
     <div className={styles.favoritesArticles}>
-        <Header />
         <div className={styles.favoritesArticlesContainer}>
                 <div className={styles.favoritesArticlesTitleBlock}>
                     <h1>Favorite articles</h1>

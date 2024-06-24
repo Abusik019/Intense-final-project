@@ -5,7 +5,6 @@ import CheckboxItem from '../../components/Checkbox';
 function Login() {
   return (
     <div className={styles.login}>
-        <Header />
         <div className={styles.loginContainer}>
             <form name='loginForm' className={styles.loginForm}>
                 <h1>Sign In</h1>

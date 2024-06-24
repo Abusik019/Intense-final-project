@@ -84,7 +84,6 @@ const allArticles = [
 function AllArticles() {
     return (
         <div className={styles.allArticles}>
-            <Header />
             <div className={styles.allArticlesContainer}>
                 <div className={styles.allArticlesTitleBlock}>
                     <h1>All articles</h1>

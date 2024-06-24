@@ -5,7 +5,6 @@ import AddAva from '../../components/addAva';
 function SignUp() {
   return (
     <div className={styles.signUp}>
-        <Header />
         <div className={styles.signUpContainer}>
             <form name='signUpForm' className={styles.signUpForm}>
                 <h1>Welcome</h1>

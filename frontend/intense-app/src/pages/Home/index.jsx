@@ -76,7 +76,6 @@ const newArticles = [
 function HomePage() {
     return (
         <div className={styles.homePage}>
-            <Header />
             <div className={styles.homeContent}>
                 <img
                     className={styles.homeBigImg}
