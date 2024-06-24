@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment="." />
     <list default="true" id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment=".">
       <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/email_senders.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/intense-project-backend/templates/reply_email.html" afterDir="false" />
@@ -13,6 +14,13 @@
       <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/posts/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/intense-project-backend/reviews/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/assets/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/intense-app/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/intense-app/src/main.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +70,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Abusik019-main",
     "last_opened_file_path": "C:/Users/xacla/Desktop/Work/Python/Django_projects/final-project"
   }
 }]]></component>
@@ -115,12 +123,12 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="a22553b6-c9f8-4aba-8070-5d98979277cf" name="Changes" comment="" />
-      <created>1717064440875</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1717064440875</updated>
+    <task id="Manage: runserver" summary="Manage: runserver">
+      <updated>1687129320000</updated>
+      <created>1687129320000</created>
+      <branch>main</branch>
+      <changelist name="Changes" id="a22553b6-c9f8-4aba-8070-5d98979277cf" comment="." />
+      <option name="NUMBER" value="" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -218,7 +226,31 @@
       <option name="project" value="LOCAL" />
       <updated>1718389233070</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary=".">
+      <option name="closed" value="true" />
+      <created>1718456280086</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1718456280086</updated>
+    </task>
+    <task id="LOCAL-00014" summary=".">
+      <option name="closed" value="true" />
+      <created>1718456342979</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1718456342979</updated>
+    </task>
+    <task id="LOCAL-00015" summary=".">
+      <option name="closed" value="true" />
+      <created>1719236198456</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1719236198456</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
