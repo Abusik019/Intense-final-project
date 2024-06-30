@@ -9,7 +9,7 @@ export const Header = () => {
       <li className={styles.headerFirstHalf}>
         <img src={logo} alt="logo"/>
         <NavLink to='/'><div>Home</div></NavLink>
-        <NavLink to='/all-articles'><div>Articles</div></NavLink>
+        <NavLink to='/articles'><div>Articles</div></NavLink>
         <NavLink to='/favorites-articles'><div>Favorites</div></NavLink>
       </li>
       <li className={styles.headerSecondHalf}>

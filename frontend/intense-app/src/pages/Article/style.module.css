@@ -1,0 +1,120 @@
+.article{
+    width: 1280px;
+    height: fit-content;
+}
+
+.articleContent{
+    height: fit-content;
+    margin-top: 30px
+}
+
+.articleTextBlock{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 50px;
+    height: fit-content;
+}
+
+.articleTextBlock h1{
+    font-size: 42px;
+    font-weight: 700;
+    font-family: "Libre Baskerville", serif;
+}
+
+.articleTextBlock h2, h3{
+    font-size: 16px;
+    font-weight: 400;
+    color: #1C1C1C80;
+    margin-top: 30px;
+}
+
+.articleTextBlock h3{
+    margin-top: 10px;
+}
+
+.articleTextBlock p{
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.aboutAuthor{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.aboutAuthor h1{
+    text-align: left;
+    font-size: 20px;
+    color: #1C1C1C80;
+    font-weight: 400;
+}
+
+.aboutAuthorContent{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    margin-top: 20px;
+}
+
+.authorBio{
+    width: 450px;
+    text-align: left;
+}
+
+.authorBio h1{
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 33px;
+    color: black;
+    font-weight: 700;
+}
+
+.authorBio h2{
+    font-size: 16px;
+    color: #1C1C1C80;
+    font-weight: 400;
+}
+
+.authorBio p{
+    margin-top: 10px;
+    font-size: 16px;
+    color: #000000;
+    font-weight: 400;
+}
+
+.otherArticles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    margin-top: 300px;
+}
+
+.prevArticle, .nextArticle{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.otherArticles button{
+    width: 150px;
+    height: 150px;
+    border-radius: 0;
+}
+
+.otherArticles h1{
+    font-family: "Libre Baskerville", serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.otherArticles span{
+    font-family: "Libre Baskerville", serif;
+    font-size: 20px;
+    font-weight: 700;
+}
