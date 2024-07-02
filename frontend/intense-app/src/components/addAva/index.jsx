@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Form, Upload, Modal, message } from 'antd';
-// import 'antd/dist/antd.css';
 
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -67,7 +66,7 @@ const FormDisabledDemo = () => {
             onChange={handleChange}
             onPreview={handlePreview}
             beforeUpload={beforeUpload}
-            className="custom-upload" // Применяем пользовательский класс
+            className="custom-upload" 
           >
             {fileList.length < 1 && (
               <button

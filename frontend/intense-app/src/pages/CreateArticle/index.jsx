@@ -1,5 +1,6 @@
 import styles from './style.module.css'
 import { TagsSearch } from '../../components/TagsSearch/index';
+import { UploadPhoto } from '../../components/UploadPhoto';
 
 function CreateArticle() {
   return (
@@ -9,6 +10,7 @@ function CreateArticle() {
             <input className={styles.titleArticleInput} type='text' placeholder='Title'/>
             <textarea className={styles.descArticleInput} type='text' placeholder='Description'/>
             <TagsSearch />
+            <UploadPhoto />
         </div>
     </div>
   )
