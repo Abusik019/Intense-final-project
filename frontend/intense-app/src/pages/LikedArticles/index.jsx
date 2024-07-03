@@ -80,15 +80,15 @@ const allArticles = [
 ]
 
 
-function FavoritesArticles() {
+function LikedArticles() {
   return (
-    <div className={styles.favoritesArticles}>
-        <div className={styles.favoritesArticlesContainer}>
-                <div className={styles.favoritesArticlesTitleBlock}>
-                    <h1>Favorite articles</h1>
+    <div className={styles.likedArticles}>
+        <div className={styles.likedArticlesContainer}>
+                <div className={styles.likedArticlesTitleBlock}>
+                    <h1>Liked articles</h1>
                     <div className={styles.decorLine}></div>
                 </div>
-                <div className={styles.favoritesArticlesContent}>
+                <div className={styles.likedArticlesContent}>
                     <HomePageArticles articles={allArticles}/>
                     <Tags tags={tags} />
                 </div>
@@ -98,4 +98,4 @@ function FavoritesArticles() {
   )
 }
 
-export default FavoritesArticles;
+export default LikedArticles;

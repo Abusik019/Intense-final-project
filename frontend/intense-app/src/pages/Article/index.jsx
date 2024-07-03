@@ -2,6 +2,10 @@ import styles from './style.module.css';
 import articleImage from '../../assets/articleImage.png';
 import profileImage from '../../assets/profile_picture.png';
 import { ArticleComments } from '../../components/ArticleComments';
+import toFavorite from '../../assets/toFavorite.svg';
+import toDelete from '../../assets/toDelete.svg';
+import toEdit from '../../assets/edit.svg';
+import toLiked from '../../assets/toLiked.svg'
 
 const article = {
     title: 'The World’s Most Dangerous Technology Ever Made.',
@@ -33,6 +37,12 @@ function Article() {
                 <h2>{article.author} • {article.date}</h2>
                 <h3>{article.tags.join(' ')}</h3>
                 <p dangerouslySetInnerHTML={{ __html: article.description.replace(/\n/g, '<br/>') }}></p>
+                <div className={styles.articleActions}>
+                    <button><img src={toFavorite}/></button>
+                    <button><img src={toLiked}/></button>
+                    <button><img src={toDelete}/></button>
+                    <button><img src={toEdit}/></button>
+                </div>
             </div>
             <div className={styles.aboutAuthor}>
                 <h1>ABOUT THE AUTHOR</h1>

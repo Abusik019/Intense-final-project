@@ -29,8 +29,26 @@
     background-color: #F5F6FA;
     border-radius: 7px;
     text-align: center;
-    padding-top: 50px;
     box-sizing: border-box;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.commentLikes > button{
+    background-color: transparent;
+    padding: 0;
+    color: #1C1C1C80;
+    font-size: 20px;
+}
+
+.commentLikes > h1{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
 }
 
 .commentContent{
@@ -46,16 +64,23 @@
 .commentInfo{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.commentInfoWrapper{
+    display: flex;
+    align-items: center;
     gap: 20px;
 }
 
-.commentInfo > h1{
+.commentInfoWrapper > h1{
     font-size: 16px;
     font-weight: 500;
     color: #334253;
 }
 
-.commentInfo > h2{
+.commentInfoWrapper > h2{
     font-size: 16px;
     font-weight: 400;
     color: #67727E;
@@ -80,4 +105,45 @@
     position: absolute;
     left: calc(-15% + 25px);
     border-radius: 5px;
+}
+
+.reply{
+    width: 75px;
+    padding: 0;
+    height: 29px;
+    text-align: right;
+    background-color: transparent;
+    color: black;
+
+    background-image: url('../../assets/reply.svg');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 1%;
+}
+
+.changeComment{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.changeComment > button{
+    background-color: transparent;
+    text-align: right;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 1%;
+    padding: 0;
+}
+
+.changeCommentDelete{
+   background-image: url('../../assets/delete2.svg');
+   color: red;
+   width: 80px;
+}
+
+.changeCommentEdit{
+   background-image: url('../../assets/edit2.svg');
+   color: black;
+   width: 70px;
 }

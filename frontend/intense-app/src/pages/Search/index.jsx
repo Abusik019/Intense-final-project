@@ -7,13 +7,12 @@ import { TagsSearch } from "../../components/TagsSearch";
 function Search() {
     const [inputValue, setInputValue] = useState(""); 
 
-    const handleInputChange = (event) => {
+    const handleInputChange = () => {
         setInputValue(newValue);
     };
-    
 
     const handleTagClick = (tagName) => {
-        setInputValue(prevValue => `${prevValue} ${tagName}`);
+        setInputValue(tagName);
     };
 
     return (

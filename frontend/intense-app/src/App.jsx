@@ -10,6 +10,8 @@ import SearchResult from './pages/SearchResult';
 import { Header } from "./components/Header";
 import Article from "./pages/Article";
 import CreateArticle from "./pages/CreateArticle";
+import LikedArticles from "./pages/LikedArticles";
+import Profile from "./pages/Profile";
 
 function App() {
     return (
@@ -25,6 +27,8 @@ function App() {
                 <Route path="/search-results" element={<SearchResult />}/>
                 <Route path="/articles/:id" element={<Article />}/>
                 <Route path="/create-article" element={<CreateArticle />}/>
+                <Route path="/liked-articles" element={<LikedArticles />}/>
+                <Route path="/profile" element={<Profile />}/> 
             </Routes>
         </>
     )
