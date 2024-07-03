@@ -20,7 +20,7 @@ class ReviewViewSet(
     viewsets.GenericViewSet
 ):
     """
-    ViewSet для операций над пользователем.
+    ViewSet для операций над коментариями.
     """
     queryset = Review.objects.all()
     permission_classes = [IsAuthenticated, IsCommentOwnerOrAdmin]
