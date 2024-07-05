@@ -10,7 +10,7 @@ class Post(models.Model):
     Модель для статей.
     """
     image = models.ImageField('Избражение', upload_to='images/')
-    title = models.CharField('Название', max_length=128)
+    title = models.CharField('Название', max_length=50)
     desc = models.TextField('Основной текст')
     time_to_read = models.CharField('Время на прочтение', max_length=100, blank=True, null=True)
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE, related_name='posts')
