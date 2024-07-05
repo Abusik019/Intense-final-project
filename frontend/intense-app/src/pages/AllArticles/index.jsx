@@ -1,9 +1,11 @@
 import styles from "./style.module.css";
-import { Header } from "../../components/Header";
 import { HomePageArticles } from "../../components/HomeArticles";
 import { Tags } from "../../components/Tags";
 import PaginationItem from '../../components/Pagination';
 import { tags } from '../../tags';
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from "react";
+import { getArticles } from "../../store/slices/articles";
 
 
 const allArticles = [
@@ -82,6 +84,16 @@ const allArticles = [
 ]
 
 function AllArticles() {
+    const dispatch = useDispatch();
+    const articles = useSelector((state) => state.articles.list)
+
+    console.log(articles);
+    
+    useEffect(() => {
+        dispatch(getArticles());
+    }, [])
+
+
     return (
         <div className={styles.allArticles}>
             <div className={styles.allArticlesContainer}>
