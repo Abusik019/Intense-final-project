@@ -96,7 +96,7 @@ function HomePage() {
                     </div>
                     <HomePageArticles articles={newArticles}/>
                 </div>
-                <NavLink to='/all-articles'><button className={styles.seeAllBtn}>See all</button></NavLink>
+                <NavLink to='/articles'><button className={styles.seeAllBtn}>See all</button></NavLink>
             </div>
         </div>
     );

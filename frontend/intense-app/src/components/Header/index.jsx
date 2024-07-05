@@ -7,7 +7,7 @@ import { useState } from "react";
 export const Header = () => {
   const [isLogin, setIsLogin] = useState(true)
   const [isActive, setIsActive] = useState(false)
-  console.log(isActive);
+
   return (
     <ul className={styles.header}>
       <li className={styles.headerFirstHalf}>
