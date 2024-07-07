@@ -85,14 +85,21 @@ const allArticles = [
 
 function AllArticles() {
     const dispatch = useDispatch();
-    const articles = useSelector((state) => state.articles.list)
-
-    console.log(articles);
+    const articles = useSelector((state) => state.articles.list);
+    const loading = useSelector((state) => state.articles.loading);
+    const error = useSelector((state) => state.articles.error);
     
+    console.log(articles);
+
     useEffect(() => {
         dispatch(getArticles());
     }, [])
 
+    if (error) return <h2>{error.message}</h2>;
+
+    if (loading === false && articles?.length === 0) {
+        return <h1>Нет данных</h1>;
+    }
 
     return (
         <div className={styles.allArticles}>
@@ -102,7 +109,7 @@ function AllArticles() {
                     <div className={styles.decorLine}></div>
                 </div>
                 <div className={styles.allArticlesContent}>
-                    <HomePageArticles articles={allArticles}/>
+                    <HomePageArticles articles={articles.results}/>
                     <Tags tags={tags} />
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useState } from "react";
 
 export const Header = () => {
-  const [isLogin, setIsLogin] = useState(true)
+  const [isLogin, setIsLogin] = useState(false)
   const [isActive, setIsActive] = useState(false)
 
   return (
