@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.generics import ListAPIView, get_object_or_404
@@ -28,6 +29,15 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    @action(detail=False, methods=['get'])
+    def top3(self, request):
+        """
+        Метод для получения топ3 залайканных постов.
+        """
+        posts = Post.objects.annotate(num_likes=Count('likes')).order_by('-num_likes')[:3]
+        serialized_data = PostSerializer(posts, many=True, context={'request': request})
+        return Response(serialized_data.data, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
     def like(self, request, pk=None):
