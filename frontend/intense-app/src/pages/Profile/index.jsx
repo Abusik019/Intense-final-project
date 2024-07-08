@@ -8,80 +8,6 @@ import { tags } from '../../tags';
 import { Tags } from '../../components/Tags';
 import PaginationItem from '../../components/Pagination';
 
-const allArticles = [
-    {
-        id: 1, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 2, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 3, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 4, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 5, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 6, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 7, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 8, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-  ]
 
 function Profile() {
   return (
@@ -104,7 +30,7 @@ function Profile() {
             <div className={styles.decorLine}></div>
         </div>
         <div className={styles.myArticlesContent}>
-            <HomePageArticles articles={allArticles}/>
+            {/* <HomePageArticles articles={allArticles}/> */}
             <Tags tags={tags} />
         </div>
         <PaginationItem />
