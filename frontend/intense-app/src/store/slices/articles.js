@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export const API_URL = "https://2acc-185-244-21-96.ngrok-free.app/api";
+export const API_URL = "http://127.0.0.1:8000/api";
 
 const initialState = {
     list: [],
