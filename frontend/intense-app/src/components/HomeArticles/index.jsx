@@ -1,8 +1,12 @@
 import styles from "./style.module.css";
 
 export const HomePageArticles = ({ articles = [] }) => {
-    console.log(articles);
-    if (!articles || articles.length === 0) {
+    if (!Array.isArray(articles)) {
+        console.error("articles is not an array", articles);
+        return <p>No articles available</p>;
+    }
+
+    if (articles.length === 0) {
         return <p>No articles available</p>;
     }
 
@@ -20,7 +24,7 @@ export const HomePageArticles = ({ articles = [] }) => {
                             <h1>{article.category.title}</h1>
                             <h2>{article.title}</h2>
                             <h3>
-                                {article.author} • {formattedDate.join('')} ({article.time_to_read} read)
+                                {article.author} • {formattedDate ? formattedDate.join('') : 'N/A'} ({article.time_to_read} read)
                             </h3>
                             <p>{article.desc ? article.desc : ''}</p>
                         </div>

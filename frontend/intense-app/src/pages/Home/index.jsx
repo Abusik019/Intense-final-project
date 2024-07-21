@@ -14,9 +14,7 @@ function HomePage() {
     const loading = useSelector((state) => state.articles.loading);
     const error = useSelector((state) => state.articles.error);
     const newestArticles = articles?.results?.filter(item => item.id >= 2) || [];
-
-    console.log(articles);
-
+    
     useEffect(() => {
         dispatch(getArticles());
         dispatch(getTopThreeArticles());
