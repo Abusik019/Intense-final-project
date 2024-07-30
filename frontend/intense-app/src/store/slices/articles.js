@@ -7,6 +7,7 @@ export const API_URL = "http://127.0.0.1:8000/api";
 const initialState = {
     list: [],
     top_three_list: [],
+    my_info: {},
     loading: false,
     error: null,
 };
@@ -60,6 +61,20 @@ export const getTopThreeArticles = createAsyncThunk("articles/getTopThreeArticle
 
     if (response.status !== 200) {
         throw "Ошибка при получении постов";
+    }
+
+    return await response.data;
+});
+
+export const getMyInfo = createAsyncThunk("articles/getMyInfo", async () => {
+    const response = await axios.get(`${API_URL}/v1/users/me/`, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    });
+
+    if (response.status !== 200) {
+        throw "Ошибка при получении данных о себе";
     }
 
     return await response.data;
@@ -137,6 +152,23 @@ const articlesSlice = createSlice({
         });
 
         builder.addCase(getToken.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // getMyInfo
+        builder.addCase(getMyInfo.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(getMyInfo.fulfilled, (state) => {
+            state.my_info = action.payload;
+
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(getMyInfo.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });
