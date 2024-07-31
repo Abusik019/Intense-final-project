@@ -31,6 +31,15 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 
     @action(detail=False, methods=['get'])
+    def my_posts(self, request):
+        """
+        Метод для получения собственных постов.
+        """
+        posts = Post.objects.filter(author=request.user)
+        serialized_data = PostSerializer(posts, many=True, context={'request': request})
+        return Response(serialized_data.data, status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=['get'])
     def top3(self, request):
         """
         Метод для получения топ3 залайканных постов.
