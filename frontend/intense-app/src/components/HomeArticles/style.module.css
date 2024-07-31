@@ -12,6 +12,13 @@
     display: flex;
     column-gap: 40px;
     width: 100%;
+    height: 311px;
+}
+
+.articleImgBlock img{
+    width: 371px;
+    height: 100%;
+    object-fit: cover;
 }
 
 .articleTextContent{
@@ -19,6 +26,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    overflow: hidden;    
+    text-overflow: ellipsis;
 }
 
 .articleTextContent h1{
@@ -39,4 +49,13 @@
     font-size: 14px;
     font-weight: 400;
     color: #1C1C1C80;
+    margin-top: 0;
+}
+
+.articleTextContent p{
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    line-height: 24px;
+    height: 190px;
 }

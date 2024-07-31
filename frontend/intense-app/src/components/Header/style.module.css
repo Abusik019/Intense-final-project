@@ -56,3 +56,74 @@
     background-color: black;
     color: white;
 }
+
+.userAva{
+    width: 50px;
+    height: 100%;
+
+    background-color: transparent;
+
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.userAva > img {
+    border-radius: 50%;
+    object-fit: cover;
+
+    width: 50px;
+    height: 50px;
+}
+
+.userActions{
+    width: 170px;
+    height: 177px;
+    box-shadow: 0px 0px 5px 0px #00000040;
+    border-radius: 0 0 15px 15px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    box-sizing: border-box;
+    padding: 15px 0;
+
+    top: 55px;
+    right: 0;
+
+    display: none;
+}
+
+.userActions > h1{
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.userActions > h2{
+    font-size: 14px;
+    font-weight: 400;
+    color: #1C1C1CCC;
+}
+
+.userActionsLine{
+    width: 100%;
+    height: 1px;
+    background-color: #1C1C1C1A;
+    margin-top: 10px;
+}
+
+.userAvaWrapper{
+    position: relative;
+}
+
+.userActionsTextBlock{
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+.userActionsTextBlock h3, h4, h5{
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    margin: 0;
+}

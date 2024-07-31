@@ -1,79 +1,29 @@
-import { Header } from "../../components/Header";
 import styles from "./style.module.css";
 import homeBigImage from "../../assets/home-big-picture.png";
 import { HomePageArticles } from '../../components/HomeArticles';
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getArticles, getTopThreeArticles } from "../../store/slices/articles";
 
-const topArticles = [
-    {
-        id: 1, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 2, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 3, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-]
-
-const newArticles = [
-    {
-        id: 1, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 2, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 3, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-    {
-        id: 4, 
-        category: 'MINIMALISM',
-        title: 'Culpa sit Laboris Exercitation ea Fugiat',
-        author: 'Leslie Pena',
-        date: 'April 25, 2012 (6 mins read)',
-        description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-        image: '../../../src//assets/example-article.png'
-    },
-]
 
 function HomePage() {
+    const dispatch = useDispatch();
+    const topThreeArticles = useSelector((state) => state.articles.top_three_list);
+    const articles = useSelector((state) => state.articles.list);
+    const loading = useSelector((state) => state.articles.loading);
+    const error = useSelector((state) => state.articles.error);
+    const newestArticles = articles?.results?.filter(item => item.id >= 2) || [];
+    
+    useEffect(() => {
+        dispatch(getArticles());
+        dispatch(getTopThreeArticles());
+    }, [dispatch]);
+
+    if (error) return <h2>{error.message}</h2>;
+    if (loading) return <h2>Loading...</h2>;
+    if (!loading && ((!topThreeArticles || topThreeArticles.length === 0) && (!articles || articles.length === 0))) return <h1>No data</h1>;
+
     return (
         <div className={styles.homePage}>
             <div className={styles.homeContent}>
@@ -87,16 +37,16 @@ function HomePage() {
                         <h1>Top 3</h1>
                         <div className={styles.decorLine}></div>
                     </div>
-                    <HomePageArticles articles={topArticles} />
+                    <HomePageArticles articles={topThreeArticles || []} />
                 </div>
                 <div className={styles.newArticles}>
                     <div className={styles.newArticlesTitleBlock}>
                         <h1>Newest</h1>
                         <div className={styles.decorLine}></div>
                     </div>
-                    <HomePageArticles articles={newArticles}/>
+                    <HomePageArticles articles={newestArticles || []}/>
                 </div>
-                <NavLink to='/all-articles'><button className={styles.seeAllBtn}>See all</button></NavLink>
+                <NavLink to='/articles'><button className={styles.seeAllBtn}>See all</button></NavLink>
             </div>
         </div>
     );
