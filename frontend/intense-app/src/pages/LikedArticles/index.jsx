@@ -1,101 +1,57 @@
 import { HomePageArticles } from "../../components/HomeArticles";
 import { Tags } from "../../components/Tags";
-import styles from "./style.module.css"
-import PaginationItem from '../../components/Pagination';
-import { tags } from '../../tags';
+import styles from "./style.module.css";
+import PaginationItem from "../../components/Pagination";
+import { tags } from "../../tags";
+import { useDispatch, useSelector } from "react-redux";
+import { getLikedArticles } from "../../store/slices/articles";
+import { useEffect, useState } from "react";
 
-const allArticles = [
-  {
-      id: 1, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-  {
-      id: 2, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-  {
-      id: 3, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-  {
-      id: 4, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-  {
-      id: 5, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-  {
-      id: 6, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-  {
-      id: 7, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-  {
-      id: 8, 
-      category: 'MINIMALISM',
-      title: 'Culpa sit Laboris Exercitation ea Fugiat',
-      author: 'Leslie Pena',
-      date: 'April 25, 2012 (6 mins read)',
-      description: 'Incididunt occaecat et qui dolore consectetur magna. Lorem veniam ut et labore consequat ut ex sunt. Ut et nostrud aliquip do anim proident ad nulla consectetur eu aute ex anim mollit. Anim aute exercitation nisi fugiat. Dolor velit excepteur commodo proident nulla commodo ullamco labore et esse.',
-      image: '../../../src//assets/example-article.png'
-  },
-]
-
+const MAX_ARTICLES_PER_PAGE = 8;
 
 function LikedArticles() {
-  return (
-    <div className={styles.likedArticles}>
-        <div className={styles.likedArticlesContainer}>
+    const dispatch = useDispatch();
+    const likedArticles = useSelector((state) => state.articles.list);
+    const loading = useSelector((state) => state.articles.loading);
+    const error = useSelector((state) => state.articles.error);
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    useEffect(() => {
+        dispatch(getLikedArticles());
+    }, [dispatch]);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    const startIndex = (currentPage - 1) * MAX_ARTICLES_PER_PAGE;
+    const currentArticles = Array.isArray(likedArticles) ? likedArticles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
+    
+    if (error) return <h2>{error.message}</h2>;
+    if (loading) return <h2>Loading...</h2>;
+    if (!loading && (!likedArticles || likedArticles.length === 0)) return <h1>No data</h1>;
+
+    return (
+        <div className={styles.likedArticles}>
+            <div className={styles.likedArticlesContainer}>
                 <div className={styles.likedArticlesTitleBlock}>
                     <h1>Liked articles</h1>
                     <div className={styles.decorLine}></div>
                 </div>
                 <div className={styles.likedArticlesContent}>
-                    <HomePageArticles articles={allArticles}/>
+                    <HomePageArticles articles={currentArticles} />
                     <Tags tags={tags} />
                 </div>
             </div>
-            <PaginationItem />
-    </div>
-  )
+            <PaginationItem 
+                current={currentPage} 
+                pageSize={MAX_ARTICLES_PER_PAGE} 
+                total={likedArticles.length} 
+                onChange={handlePageChange} 
+            />
+        </div>
+    );
 }
 
 export default LikedArticles;

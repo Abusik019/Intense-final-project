@@ -80,6 +80,20 @@ export const getMyInfo = createAsyncThunk("articles/getMyInfo", async () => {
     return await response.data;
 });
 
+export const getLikedArticles = createAsyncThunk("articles/getLikedArticles", async () => {
+    const response = await axios.get(`${API_URL}/v1/posts/my_liked/`, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    });
+
+    if (response.status !== 200) {
+        throw "Ошибка при получении постов";
+    }
+
+    return await response.data;
+});
+
 
 const articlesSlice = createSlice({
     name: "articles",
@@ -161,7 +175,7 @@ const articlesSlice = createSlice({
             state.loading = true;
         });
 
-        builder.addCase(getMyInfo.fulfilled, (state) => {
+        builder.addCase(getMyInfo.fulfilled, (state, action) => {
             state.my_info = action.payload;
 
             state.loading = false;
@@ -169,6 +183,22 @@ const articlesSlice = createSlice({
         });
 
         builder.addCase(getMyInfo.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // getLikedArticles
+        builder.addCase(getLikedArticles.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(getLikedArticles.fulfilled, (state, action) => {
+            state.list = action.payload;
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(getLikedArticles.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });

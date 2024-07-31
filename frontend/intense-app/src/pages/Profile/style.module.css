@@ -55,6 +55,11 @@
     justify-content: end;
 }
 
+.profileLinks > a > img{
+    width: 24px;
+    height: 24px;
+}
+
 .myArticlesTitleBlock{
     margin-top: 40px;
     width: 289px;

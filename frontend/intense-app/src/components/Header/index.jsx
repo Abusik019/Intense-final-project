@@ -14,6 +14,12 @@ export const Header = () => {
         setIsLogin(Cookies.get('token') ? true : false)
     }, [])
 
+    const handleSignOut = () => {
+        Cookies.remove('token');
+        setIsLogin(false);
+        navigate('/login');  // Перенаправление пользователя на страницу входа после выхода
+    };
+
     return (
         <ul className={styles.header}>
             <li className={styles.headerFirstHalf}>
@@ -73,9 +79,7 @@ export const Header = () => {
                                 <NavLink to="liked-articles">
                                     <h4>Liked</h4>
                                 </NavLink>
-                                <NavLink>
-                                    <h5>Sign out</h5>
-                                </NavLink>
+                                <h5 onClick={handleSignOut}>Sign out</h5>
                             </div>
                         </div>
                     </div>

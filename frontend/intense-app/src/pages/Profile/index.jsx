@@ -1,8 +1,7 @@
 import styles from './style.module.css'
-import twitter from '../../assets/twitter.svg'
-import instagram from '../../assets/instagram.svg'
+import myLink from '../../assets/my-link.png'
+import telegram from '../../assets/telegram.svg'
 import linkedin from '../../assets/linkedin.svg'
-import profile from '../../assets/profile.png'
 import { HomePageArticles } from '../../components/HomeArticles';
 import { tags } from '../../tags';
 import { Tags } from '../../components/Tags';
@@ -21,26 +20,25 @@ function Profile() {
     console.log(myInfo);
 
     useEffect(() => {
-        dispatch(getMyInfo);
+        dispatch(getMyInfo());
     }, [dispatch])
 
-    // if (error) return <h2>{error.message}</h2>;
-    // if (loading) return <h2>Loading...</h2>;
-    // if (!loading) return <h1>No data</h1>;
+    if (error) return <h2>{error.message}</h2>;
+    if (loading) return <h2>Loading...</h2>;
 
 
     return (
         <div className={styles.profile}>
             <div className={styles.userBio}>
-                <img src={profile}/>
+                <img src={myInfo.image}/>
                 <div className={styles.userBioTextBlock}>
-                    <h1>Arthur Black</h1>
-                    <h2>@arthurblack</h2>
-                    <h3>Ipsum adipisicing culpa est nisi consequat ex amet magna culpa veniam tempor irure ea. Reprehenderit labore do tempor eiusmod in consectetur ex sunt id mollit commodo ipsum deserunt quis.</h3>
+                    <h1>{myInfo.first_name} {myInfo.last_name}</h1>
+                    <h2>{myInfo.username}</h2>
+                    <h3>{myInfo.about_me}</h3>
                     <div className={styles.profileLinks}>
-                        <a href='#'><img src={linkedin}/></a>
-                        <a href='#'><img src={instagram}/></a>
-                        <a href='#'><img src={twitter}/></a>
+                        <a href={myInfo.linkedin_link || '#'}><img src={linkedin}/></a>
+                        <a href={myInfo.tg_link || '#'}><img src={telegram}/></a>
+                        <a href={myInfo.link || '#'}><img src={myLink}/></a>
                     </div>
                 </div>
             </div>
