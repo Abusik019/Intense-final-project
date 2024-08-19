@@ -13,8 +13,9 @@ function HomePage() {
     const articles = useSelector((state) => state.articles.list);
     const loading = useSelector((state) => state.articles.loading);
     const error = useSelector((state) => state.articles.error);
-    const newestArticles = articles?.results?.filter(item => item.id >= 2) || [];
-    
+    const newestArticles = articles?.filter(item => item.id >= 2) || [];
+
+
     useEffect(() => {
         dispatch(getArticles());
         dispatch(getTopThreeArticles());

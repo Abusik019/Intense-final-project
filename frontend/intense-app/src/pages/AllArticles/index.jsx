@@ -12,7 +12,6 @@ const MAX_ARTICLES_PER_PAGE = 8;
 function AllArticles() {
     const dispatch = useDispatch();
     const articles = useSelector((state) => state.articles.list);
-    const allArticles = articles.results;
     const loading = useSelector((state) => state.articles.loading);
     const error = useSelector((state) => state.articles.error);
     const [currentPage, setCurrentPage] = useState(1);
@@ -28,11 +27,11 @@ function AllArticles() {
     };
 
     const startIndex = (currentPage - 1) * MAX_ARTICLES_PER_PAGE;
-    const currentArticles = Array.isArray(allArticles) ? allArticles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
+    const currentArticles = Array.isArray(articles) ? articles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
 
     if (error) return <h2>{error.message}</h2>;
     if (loading) return <h2>Loading...</h2>;
-    if (!loading && (!allArticles || allArticles.length === 0)) return <h1>No data</h1>;
+    if (!loading && (!articles || articles.length === 0)) return <h1>No data</h1>;
 
     return (
         <div className={styles.allArticles}>
@@ -49,7 +48,7 @@ function AllArticles() {
             <PaginationItem 
                 current={currentPage} 
                 pageSize={MAX_ARTICLES_PER_PAGE} 
-                total={allArticles.length} 
+                total={articles.length} 
                 onChange={handlePageChange} 
             />
         </div>

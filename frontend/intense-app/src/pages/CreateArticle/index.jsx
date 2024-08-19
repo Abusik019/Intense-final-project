@@ -7,11 +7,11 @@ function CreateArticle() {
     const [textareaValue, setTextareaValue] = useState("");
 
     const handleTagClick = (tagName) => {
-      setTextareaValue(tagName);
+        setTextareaValue(textareaValue + tagName);
     };
 
     const handleTextareaChange = (e) => {
-      setTextareaValue(e.target.value);
+        setTextareaValue(e.target.value);
     };
 
     return (

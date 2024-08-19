@@ -10,6 +10,8 @@ export const Header = () => {
     const [isActive, setIsActive] = useState(false);
     const navigate = useNavigate();
 
+    console.log(isLogin);
+
     useEffect(()  =>  {
         setIsLogin(Cookies.get('token') ? true : false)
     }, [])
@@ -17,7 +19,7 @@ export const Header = () => {
     const handleSignOut = () => {
         Cookies.remove('token');
         setIsLogin(false);
-        navigate('/login');  // Перенаправление пользователя на страницу входа после выхода
+        navigate('/login');
     };
 
     return (
