@@ -8,6 +8,7 @@ const initialState = {
     list: [],
     top_three_list: [],
     my_info: {},
+    categories: [],
     loading: false,
     error: null,
 };
@@ -89,6 +90,41 @@ export const getLikedArticles = createAsyncThunk("articles/getLikedArticles", as
 
     if (response.status !== 200) {
         throw "Ошибка при получении постов";
+    }
+
+    return await response.data;
+});
+
+export const createArticle = createAsyncThunk('articles/createArticle', async ({ title, desc, time_to_read, categoryTitle  }) => {
+    const article = {
+        title,
+        desc,
+        time_to_read,
+        category: {
+            title: categoryTitle
+        },
+    }
+
+    console.log(article);
+
+    const response = await axios.post(`${API_URL}/v1/posts/`, article, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    });
+
+    if (response.status !== 200) {
+        throw "Ошибка при добавлении поста";
+    }
+
+    return await response.data;
+})
+
+export const getCategories = createAsyncThunk("articles/getCategories", async () => {
+    const response = await axios.get(`${API_URL}/v1/posts/get_categories`);
+
+    if (response.status !== 200) {
+        throw "Ошибка при получении категорий";
     }
 
     return await response.data;
@@ -199,6 +235,38 @@ const articlesSlice = createSlice({
         });
 
         builder.addCase(getLikedArticles.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // createArticle
+        builder.addCase(createArticle.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(createArticle.fulfilled, (state) => {
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(createArticle.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // getCategories
+        builder.addCase(getCategories.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(getCategories.fulfilled, (state, action) => {
+            state.categories = action.payload;
+
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(getCategories.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });
