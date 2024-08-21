@@ -95,19 +95,21 @@ export const getLikedArticles = createAsyncThunk("articles/getLikedArticles", as
     return await response.data;
 });
 
-export const createArticle = createAsyncThunk('articles/createArticle', async ({ title, desc, time_to_read, categoryTitle  }) => {
-    const article = {
-        title,
-        desc,
-        time_to_read,
+export const createArticle = createAsyncThunk('articles/createArticle', async (article) => {
+    const data = {
+        title: article.title,
+        desc: article.desc,
+        time_to_read: article.time_to_read,
         category: {
-            title: categoryTitle
+            title: article.categoryTitle
         },
+        category_id: article.category_id,
+        image: article.image
     }
 
     console.log(article);
 
-    const response = await axios.post(`${API_URL}/v1/posts/`, article, {
+    const response = await axios.post(`${API_URL}/v1/posts/`, data, {
         headers: {
             'Authorization': `Bearer ${Cookies.get('token')}`
         }

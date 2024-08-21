@@ -4,13 +4,14 @@ import { UploadPhoto } from "../../components/UploadPhoto";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { createArticle, getCategories } from "../../store/slices/articles";
-import InputNumberElement from './../../components/InputNumber/index';
+import InputNumberElement from './../../components/InputNumber';
 
 function CreateArticle() {
     const [title, setTitle] = useState("");
     const [inputNumber, setInputNumber] = useState(1);
     const [category, setCategory] = useState("");
     const [textareaValue, setTextareaValue] = useState("");
+    const [image, setImage] = useState("");
     const categories = useSelector((state) => state.articles.categories);
     const dispatch = useDispatch();
 
@@ -26,7 +27,8 @@ function CreateArticle() {
         setTextareaValue(e.target.value);
         const value = e.target.value.match(/^#\w+/gi);
         if (value && value.length > 0) {
-            setCategory(value[0]);
+            const new_value = value[0].replace("#", "");
+            setCategory(new_value);
         } else {
             setCategory("");
         }
@@ -36,10 +38,28 @@ function CreateArticle() {
         setInputNumber(value);
     }
 
-    function handleSaveClick(){
-        console.log(title, inputNumber, textareaValue, category);
-        dispatch(createArticle({title, desc: textareaValue,  time_to_read: inputNumber, categoryTitle: category}))
+    function handleSaveClick() {
+        const this_category = categories.find((item) => item.title === category);
+
+        if (!this_category) {
+            console.error("Category not found");
+            return;
+        }
+    
+        const article = {
+            title,
+            desc: textareaValue,
+            time_to_read: inputNumber,
+            categoryTitle: category,
+            category_id: this_category.id,
+            image
+        };
+
+        dispatch(createArticle(article));
+
+        console.log(categories);
     }
+    
  
 
     return (
@@ -60,7 +80,7 @@ function CreateArticle() {
                     onChange={handleTextareaChange}
                 />
                 <TagsSearch handleTagClick={handleTagClick} />
-                <UploadPhoto />
+                <UploadPhoto setImage={setImage}/>
                 <div className={styles.minToRead}>
                     <h1>Time to read:</h1>
                     <InputNumberElement getInputNumberValue={getInputNumberValue}/>

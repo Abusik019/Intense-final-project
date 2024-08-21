@@ -4,7 +4,7 @@ import deleteImage from '../../assets/delete.png';
 
 const imageTypes = ["jpeg", "png", "jfif", "jpg", "svg"];
 
-export const UploadPhoto = () => {
+export const UploadPhoto = ({ setImage }) => {
     const [photoUrl, setPhotoUrl] = useState("");
     const [warning, setWarning] = useState(false);
     const [deleteImageVisible, setDeleteImageVisible] = useState(false);
@@ -16,6 +16,7 @@ export const UploadPhoto = () => {
         if (imageTypes.includes(typeImage)) {
             setWarning(false);
             setPhotoUrl(name);
+            setImage(name)
         } else {
             setWarning(true);
         }
