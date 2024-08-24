@@ -19,19 +19,19 @@ function CreateArticle() {
         dispatch(getCategories());
     }, [dispatch]);
 
-    const handleTagClick = (tagName) => {
-        setTextareaValue(textareaValue + tagName);
-    };
-
-    const handleTextareaChange = (e) => {
-        setTextareaValue(e.target.value);
-        const value = e.target.value.match(/^#\w+/gi);
+    useEffect(() => {
+        console.log(textareaValue);
+        const value = textareaValue.match(/^#\w+/gi);
         if (value && value.length > 0) {
             const new_value = value[0].replace("#", "");
             setCategory(new_value);
         } else {
             setCategory("");
         }
+    }, [textareaValue]);
+
+    const handleTextareaChange = (e) => {
+        setTextareaValue(e.target.value);
     };
 
     const getInputNumberValue = (value) => {
@@ -56,11 +56,7 @@ function CreateArticle() {
         };
 
         dispatch(createArticle(article));
-
-        console.log(categories);
     }
-    
- 
 
     return (
         <div className={styles.createArticle}>
@@ -79,7 +75,7 @@ function CreateArticle() {
                     value={textareaValue}
                     onChange={handleTextareaChange}
                 />
-                <TagsSearch handleTagClick={handleTagClick} />
+                <TagsSearch handleTagClick={(tagName) => setTextareaValue(textareaValue + tagName)} />
                 <UploadPhoto setImage={setImage}/>
                 <div className={styles.minToRead}>
                     <h1>Time to read:</h1>

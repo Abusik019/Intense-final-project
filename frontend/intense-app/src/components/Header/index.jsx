@@ -8,13 +8,13 @@ import Cookies from 'js-cookie';
 export const Header = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [isActive, setIsActive] = useState(false);
+    const token = Cookies.get('token') || null;
     const navigate = useNavigate();
 
-    console.log(isLogin);
-
-    useEffect(()  =>  {
-        setIsLogin(Cookies.get('token') ? true : false)
-    }, [])
+    useEffect(() => {
+        setIsLogin(token === null ? false : true);
+        setIsActive(false)
+    }, [token]); 
 
     const handleSignOut = () => {
         Cookies.remove('token');

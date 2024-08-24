@@ -10,13 +10,13 @@ export const UploadPhoto = ({ setImage }) => {
     const [deleteImageVisible, setDeleteImageVisible] = useState(false);
 
     const handleInputFile = (e) => {
-        const { name } = e.target.files[0];
-        const typeImage = name.split(".")[1];
+        const file = e.target.files[0];
+        const typeImage = file.name.split(".")[1];
 
         if (imageTypes.includes(typeImage)) {
             setWarning(false);
-            setPhotoUrl(name);
-            setImage(name)
+            setPhotoUrl(URL.createObjectURL(file)); 
+            setImage(file);  
         } else {
             setWarning(true);
         }
@@ -32,7 +32,7 @@ export const UploadPhoto = ({ setImage }) => {
                 >
                     <img
                         className='image'
-                        src={`../../../src/assets/${photoUrl}`}
+                        src={photoUrl}  
                     />
                     <button onClick={() => setPhotoUrl(false)} className="deleteImage" style={{ display: deleteImageVisible ? 'block' : 'none' }}>
                         <img src={deleteImage} />

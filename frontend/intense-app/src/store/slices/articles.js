@@ -96,20 +96,18 @@ export const getLikedArticles = createAsyncThunk("articles/getLikedArticles", as
 });
 
 export const createArticle = createAsyncThunk('articles/createArticle', async (article) => {
-    const data = {
-        title: article.title,
-        desc: article.desc,
-        time_to_read: article.time_to_read,
-        category: {
-            title: article.categoryTitle
-        },
-        category_id: article.category_id,
-        image: article.image
-    }
+    console.log(article.image);
+    console.log(article.image instanceof File);  // Должно вернуть true
 
-    console.log(article);
 
-    const response = await axios.post(`${API_URL}/v1/posts/`, data, {
+    const formData = new FormData();
+    formData.append('title', article.title);
+    formData.append('desc', article.desc);
+    formData.append('time_to_read', article.time_to_read);
+    formData.append('category_id', article.category_id);
+    formData.append('image', article.image);
+
+    const response = await axios.post(`${API_URL}/v1/posts/`, formData, {
         headers: {
             'Authorization': `Bearer ${Cookies.get('token')}`
         }
@@ -132,6 +130,19 @@ export const getCategories = createAsyncThunk("articles/getCategories", async ()
     return await response.data;
 });
 
+export const getMyPosts = createAsyncThunk("articles/getMyPosts", async () => {
+    const response = await axios.get(`${API_URL}/v1/posts/my_posts/`, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    });
+
+    if (response.status !== 200) {
+        throw "Ошибка при получении постов";
+    }
+
+    return await response.data;
+});
 
 const articlesSlice = createSlice({
     name: "articles",
@@ -269,6 +280,22 @@ const articlesSlice = createSlice({
         });
 
         builder.addCase(getCategories.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // getMyPosts
+        builder.addCase(getMyPosts.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(getMyPosts.fulfilled, (state, action) => {
+            state.list = action.payload;
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(getMyPosts.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });

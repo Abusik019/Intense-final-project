@@ -15,12 +15,21 @@
 
 .userBio{
     width: 718px;
-    height: 200px;
+    height: fit-content;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 30px;
+
     margin-top: 150px;
+}
+
+.userBio > img{
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
 }
 
 .userBioTextBlock{
