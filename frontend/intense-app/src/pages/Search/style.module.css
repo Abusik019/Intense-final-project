@@ -4,25 +4,9 @@
 
     padding: 10px;
     box-sizing: border-box;
-}
 
-.inputSearch{
-    width: 707px;
-    height: 60px;
-
-    background-color: transparent;
-    border: 1px solid black;
-
-    font-size: 16px;
-
-    padding: 15px;
-    box-sizing: border-box;
-
-    padding-right: 70px;
-
-    border-radius: 25px;
-    margin-top: 50px;
-    color: black;
+    display: flex;
+    flex-direction: column;
 }
 
 .tagsContainer{
@@ -66,4 +50,120 @@
     height: fit-content;
 
     margin: 0 auto;
+}
+
+.searchResults{
+    width: 707px;
+    height: fit-content;
+    max-height: 440px;
+
+    overflow-y: auto;
+
+    background-color: rgb(240, 240, 240);
+    margin: 0 auto;
+    margin-top: 5px;
+
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.searchResults li{
+    width: 100%;
+    height: fit-content;
+
+    border-bottom: 3px solid #fff;
+
+    padding: 10px 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.topSide{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+
+    font-size: 16px;
+
+    height: fit-content;
+}
+
+.topSide > h1,h3{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    margin: 0 !important;
+
+    height: 27px;
+
+    color: rgb(99, 99, 99);
+}
+
+.topSide h2{
+    font-size: 18px;
+    line-height: 26px;
+    height: 27px;
+}
+
+.bottomSide{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottomSide > img{
+    height: 40px;
+    width: 40px;
+}
+
+.bottomLeftSide{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bottomLeftSide img{
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.bottomLeftSide > a{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+
+    transition: color .3s ease;
+    cursor: pointer;
+}
+
+.bottomLeftSide > a:hover{
+    color: rgb(199, 22, 253);
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0c0c0c; 
+    border-radius: 12px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1a1a1a; 
 }
