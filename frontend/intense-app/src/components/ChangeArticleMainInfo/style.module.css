@@ -1,0 +1,58 @@
+.articleTitle, .articleAuthor, .articleCategory, .articleTime{
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: 2px solid black;
+    border-radius: 12px;
+    
+    background-color: transparent;
+    color: #000000;    
+}
+
+.articleTitle{
+    font-size: 42px;
+    font-weight: 700;
+    font-family: "Libre Baskerville", serif;
+}
+
+.articleAuthor, .articleTime, .articleCategory{
+    font-size: 16px;
+    font-weight: 400;
+
+    margin-top: 30px;
+}
+
+.changeArticle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputsWrapper{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.articleDesc{
+    width: 100%;
+    min-height: 300px;
+    height: fit-content;
+
+    resize: none;
+
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 30px;
+    text-align: left;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+    background-color: transparent;
+    color: #000000;
+
+    border: 2px solid black;
+    border-radius: 12px;
+}

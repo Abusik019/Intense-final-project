@@ -96,11 +96,8 @@ export const getLikedArticles = createAsyncThunk("articles/getLikedArticles", as
 });
 
 export const createArticle = createAsyncThunk('articles/createArticle', async (article) => {
-    console.log(article.image);
-    console.log(article.image instanceof File);  // Должно вернуть true
-
-
     const formData = new FormData();
+
     formData.append('title', article.title);
     formData.append('desc', article.desc);
     formData.append('time_to_read', article.time_to_read);
@@ -144,6 +141,16 @@ export const getMyPosts = createAsyncThunk("articles/getMyPosts", async () => {
     return await response.data;
 });
 
+export const getArticle = createAsyncThunk("articles/getArticle", async (id) => {
+    const response = await axios.get(`${API_URL}/v1/posts/${id}`);
+
+    if (response.status !== 200) {
+        throw "Ошибка при получении поста";
+    }
+
+    return await response.data;
+});
+
 const articlesSlice = createSlice({
     name: "articles",
     initialState,
@@ -163,6 +170,7 @@ const articlesSlice = createSlice({
 
         builder.addCase(getArticles.fulfilled, (state, action) => {
             state.list = action.payload;
+
             state.loading = false;
             state.error = null;
         });
@@ -296,6 +304,23 @@ const articlesSlice = createSlice({
         });
 
         builder.addCase(getMyPosts.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // getArticle
+        builder.addCase(getArticle.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(getArticle.fulfilled, (state, action) => {
+            state.list = action.payload;
+
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(getArticle.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });

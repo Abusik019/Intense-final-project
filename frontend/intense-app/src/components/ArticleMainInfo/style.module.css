@@ -1,0 +1,23 @@
+.articleTitle{
+    font-size: 42px;
+    font-weight: 700;
+    font-family: "Libre Baskerville", serif;
+}
+
+.articleAuthor, .articleCategory{
+    font-size: 16px;
+    font-weight: 400;
+    color: #1C1C1C80;
+    margin-top: 30px;
+}
+
+.articleCategory{
+    margin-top: 10px;
+}
+
+.articleDesc{
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 30px;
+    text-align: left;
+}
