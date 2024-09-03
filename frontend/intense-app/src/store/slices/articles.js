@@ -151,6 +151,35 @@ export const getArticle = createAsyncThunk("articles/getArticle", async (id) => 
     return await response.data;
 });
 
+export const changeArticle = createAsyncThunk('articles/changeArticle', async ({ article, articleID }) => {
+    console.log(article);
+    const formData = new FormData();
+
+    formData.append('title', article.title);
+    formData.append('desc', article.desc);
+    formData.append('time_to_read', article.time[0]);
+    formData.append('author', article.author);
+    formData.append('category_id', JSON.stringify(article.category_id));
+
+    if(article.image){
+        formData.append('image', article.image);
+    }
+
+    const response = await axios.patch(`${API_URL}/v1/posts/${articleID}/`, formData, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`,
+        },
+    });
+
+    if (response.status !== 200) {
+        throw new Error("Ошибка при изменении поста");
+    }
+
+    return response.data;
+});
+
+
+
 const articlesSlice = createSlice({
     name: "articles",
     initialState,
@@ -321,6 +350,21 @@ const articlesSlice = createSlice({
         });
 
         builder.addCase(getArticle.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // changeArticle
+        builder.addCase(changeArticle.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(changeArticle.fulfilled, (state) => {
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(changeArticle.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });

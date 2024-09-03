@@ -78,7 +78,7 @@ export const Header = () => {
                                 <NavLink to="/create-article">
                                     <h3>Write an Article</h3>
                                 </NavLink>
-                                <NavLink to="liked-articles">
+                                <NavLink to="/liked-articles">
                                     <h4>Liked</h4>
                                 </NavLink>
                                 <h5 onClick={handleSignOut}>Sign out</h5>

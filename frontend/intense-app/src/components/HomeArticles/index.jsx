@@ -1,4 +1,5 @@
 import styles from "./style.module.css";
+import { NavLink } from 'react-router-dom';
 
 export const HomePageArticles = ({ articles = [] }) => {
     if (!Array.isArray(articles)) {
@@ -22,7 +23,7 @@ export const HomePageArticles = ({ articles = [] }) => {
                         </div>
                         <div className={styles.articleTextContent}>
                             <h1>{article.category.title}</h1>
-                            <h2>{article.title}</h2>
+                            <NavLink to={`/articles/${article.id}`}>{article.title}</NavLink>
                             <h3>
                                 {article.author} • {formattedDate ? formattedDate.join('') : 'N/A'} ({article.time_to_read} read)
                             </h3>

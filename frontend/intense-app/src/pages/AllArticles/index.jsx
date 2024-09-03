@@ -16,8 +16,6 @@ function AllArticles() {
     const error = useSelector((state) => state.articles.error);
     const [currentPage, setCurrentPage] = useState(1);
 
-    console.log(articles);
-
     useEffect(() => {
         dispatch(getArticles());
     }, [dispatch]);

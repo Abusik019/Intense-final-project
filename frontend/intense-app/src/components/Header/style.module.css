@@ -15,21 +15,12 @@
     font-size: 20px;
 }
 
-.headerFirstHalf > div{
+
+.headerFirstHalf > a{
     cursor: pointer;
-    transition: font-weight .3s ease;
 }
 
-.headerFirstHalf > div:hover{
-    font-weight: 500;
-}
-
-.headerFirstHalf > a > div{
-    cursor: pointer;
-    transition: font-weight .3s ease;
-}
-
-.headerFirstHalf > a > div:hover{
+.headerFirstHalf > a:focus{
     font-weight: 500;
 }
 

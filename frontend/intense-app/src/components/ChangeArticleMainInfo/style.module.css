@@ -29,6 +29,10 @@
     align-items: center;
 }
 
+.changeArticle > button{
+    margin-top: 30px;
+}
+
 .inputsWrapper{
     display: flex;
     align-items: center;
@@ -55,4 +59,25 @@
 
     border: 2px solid black;
     border-radius: 12px;
+}
+
+.categoryError{
+    color: rgb(252, 47, 47);
+
+    width: fit-content;
+    height: 50px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: 2px solid rgb(252, 47, 47);
+    border-radius: 12px;
+
+    background-color: #fff;
+
+    margin-top: 20px;
 }
