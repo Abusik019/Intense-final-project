@@ -31,7 +31,7 @@ function Article() {
             dispatch(getMyInfo());
             dispatch(getCategories());
         }
-    }, [dispatch,  id, showSaveBtn]);
+    }, [dispatch, id, showSaveBtn]);
 
     const handleSave = (updatedArticle) => {
         let categoryFound = false;
@@ -63,11 +63,13 @@ function Article() {
         if (!categoryFound) {
             setShowError(true);
         }
-    };    
+    };
 
     if (error) return <h2>{error.message}</h2>;
     if (loading) return <h2>Loading...</h2>;
     if (!loading && (!article || article.length === 0)) return <h1>No data</h1>;
+
+    const formattedDate = article.created_at ? article.created_at.match(/\d\d\d\d-\d\d-\d\d/g) : 'N/A';
 
     return (
         <div className={styles.article}>
@@ -75,23 +77,22 @@ function Article() {
                 {showSaveBtn ? <UploadPhoto setImage={setImage}/> : <img src={article.image} alt="Article" />}
                 <div className={styles.articleTextBlock}>
                     {showSaveBtn 
-                        ? 
-                            <ChangeArticleMainInfo 
-                                title={article.title} 
-                                author={article.author} 
-                                time={article.created_at.match(/\d\d\d\d-\d\d-\d\d/g)} 
-                                category={article.category.title} 
-                                desc={article.desc} 
-                                onSave={handleSave} 
-                                showError={showError}
-                            />
-                        :   <ArticleMainInfo 
-                                title={article.title} 
-                                author={article.author} 
-                                time={article.created_at.match(/\d\d\d\d-\d\d-\d\d/g)} 
-                                category={article.category.title} 
-                                desc={article.desc} 
-                            />
+                        ? <ChangeArticleMainInfo 
+                            title={article?.title} 
+                            author={article?.author} 
+                            time={formattedDate} 
+                            category={article?.category?.title || 'Unknown'} 
+                            desc={article?.desc} 
+                            onSave={handleSave} 
+                            showError={showError}
+                        />
+                        : <ArticleMainInfo 
+                            title={article?.title} 
+                            author={article?.author} 
+                            time={formattedDate} 
+                            category={article?.category?.title || 'Unknown'} 
+                            desc={article?.desc} 
+                        />
                     }
                     <div className={styles.articleActionsWrapper}>
                         <div className={styles.articleActions}>
@@ -131,7 +132,7 @@ function Article() {
                 </div>
                 <div className={styles.nextArticle}>
                     <button>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABXUlEQVR4nO3dsWoCQRgA4csTRoLBwjx7wAQL0TdQmCAETHHWO2Tnq678Ybjlmv92WZIkSZLknwPegTNwBDaj55ka8AJceLgCu9FzTQ04/QlSlNGAt983oygWwHYlyg34GD3btIoiVBShoggVRagoQvT15UNRfCiKD0XxoSg+FMWHovhQFB+K4kNRfCiKD0XxoSg+FMWHovhQFB+K4kNRfCiKD0XxoSg+FMWHovhQFB+K4kNRfCiKD0XxoSg+FMUH2D1ZRG2PXhble9hAs2M9yNfouaZER5bu3yvXlZ35/ejZpkMxPCiGB8XwoBgeFMODYnhQDA+K4UExPCiGB8XwoBgeFMODYnhQDA+K4UExPCiGB8XwoBgeFMODYnhQDA+K4UExPCiGB8XwoBgeFMOjGCLFECmGSDFEiiFSDBHgtcuJRe6rxt0ULQIcu0vdd2QdgM/78+h5kiRJkmSZ3A+0DIVVO2ON/gAAAABJRU5ErkJggg==" alt="Next" />
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABXUlEQVR4nO3dsWoCQRgA4csTRoLBwjx7wAQL0TdQmCAETHHWO2Tnq678Ybjlmv92WZIkSZLknwPegTNwBDaj55ka8AJceLgCu9FzTQ04/QlSlNGAt983oygWwHYlyg34GD3btIoiVBShoggVRagoQvT15UNRfCiKD0XxoSg+FMWHovhQFB+K4kNRfCiKD0XxoSg+FMWHovhQFB+K4kNRfCiKD0XxoSg+FMWHovhQFB+K4kNRfCiKD0XxoSg+FMWHovhQFB+K4kNRfCiKD0XxoSg+FMUH2D1ZRG2PXhble9hAs2M9yNfouaZER5bu3yvXlZ35/ejZpkMxPCiGB8XwoBgeFMODYnhQDA+K4UExPCiGB8XwoBgeFMODYnhQDA+K4UExPCiGB8XwoBgeFMODYnhQDA+K4UExPCiGB8XwoBgeFMOjGCLFECmGSDFEiiFSDBHgtcuJRe6rxt0ULQIcu0vdd2QdgM/78+h5kiRJkmSZ3A+0DIVVO2ON/gAAAABJRU5ErkJggg==" alt="Next" />
                     </button>
                 </div>
             </div>

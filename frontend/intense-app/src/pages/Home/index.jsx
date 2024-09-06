@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getArticles, getTopThreeArticles } from "../../store/slices/articles";
+import { Preloader } from "../../components/Preloader";
 
 
 function HomePage() {
@@ -13,8 +14,7 @@ function HomePage() {
     const articles = useSelector((state) => state.articles.list);
     const loading = useSelector((state) => state.articles.loading);
     const error = useSelector((state) => state.articles.error);
-    const newestArticles = articles?.filter(item => item.id >= 2) || [];
-
+    const newestArticles = Array.isArray(articles) ? articles.filter(item => item.id >= 2) : []; 
 
     useEffect(() => {
         dispatch(getArticles());
@@ -22,7 +22,7 @@ function HomePage() {
     }, [dispatch]);
 
     if (error) return <h2>{error.message}</h2>;
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <Preloader />
     if (!loading && ((!topThreeArticles || topThreeArticles.length === 0) && (!articles || articles.length === 0))) return <h1>No data</h1>;
 
     return (
