@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import { ArticleMainInfo } from "../../components/ArticleMainInfo";
 import { ChangeArticleMainInfo } from "../../components/ChangeArticleMainInfo";
 import { UploadPhoto } from './../../components/UploadPhoto';
+import { Preloader } from "../../components/Preloader";
 
 function Article() {
     const { id } = useParams();
@@ -66,7 +67,7 @@ function Article() {
     };
 
     if (error) return <h2>{error.message}</h2>;
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <Preloader />;
     if (!loading && (!article || article.length === 0)) return <h1>No data</h1>;
 
     const formattedDate = article.created_at ? article.created_at.match(/\d\d\d\d-\d\d-\d\d/g) : 'N/A';

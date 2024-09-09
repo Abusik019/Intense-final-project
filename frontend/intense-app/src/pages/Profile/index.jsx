@@ -9,6 +9,7 @@ import PaginationItem from '../../components/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { getMyInfo, getMyPosts } from '../../store/slices/articles'
+import { Preloader } from '../../components/Preloader';
 
 const MAX_ARTICLES_PER_PAGE = 8;
 
@@ -34,7 +35,7 @@ function Profile() {
     const currentArticles = Array.isArray(myArticles) ? myArticles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
 
     if (error) return <h2>{error.message}</h2>;
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <Preloader />;
     if (!loading && (!myArticles || myArticles.length === 0)) return <h1>No data</h1>;
 
 

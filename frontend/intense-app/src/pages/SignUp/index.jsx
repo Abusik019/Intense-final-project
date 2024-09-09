@@ -1,5 +1,4 @@
 import styles from './style.module.css';
-import { Header } from '../../components/Header';
 import AddAva from '../../components/addAva';
 
 function SignUp() {

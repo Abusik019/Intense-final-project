@@ -6,6 +6,7 @@ import { tags } from '../../tags';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from "react";
 import { getArticles } from "../../store/slices/articles";
+import { Preloader } from "../../components/Preloader";
 
 const MAX_ARTICLES_PER_PAGE = 8;
 
@@ -28,7 +29,7 @@ function AllArticles() {
     const currentArticles = Array.isArray(articles) ? articles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
 
     if (error) return <h2>{error.message}</h2>;
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <Preloader />;
     if (!loading && (!articles || articles.length === 0)) return <h1>No data</h1>;
 
     return (

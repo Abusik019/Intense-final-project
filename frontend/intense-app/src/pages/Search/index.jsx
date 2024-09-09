@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { getArticles } from "../../store/slices/articles";
 import favoriteLogo from '../../assets/is-favorite.svg';
 import notFavoriteLogo from '../../assets/not-favorite.svg'
+import { Preloader } from "../../components/Preloader";
 
 function Search() {
     const dispatch = useDispatch();
@@ -26,27 +27,35 @@ function Search() {
                 console.error("Ошибка при загрузке статей:", error);
             });
     }, [dispatch]);
-    
 
     const handleInputChange = (e) => {
         const value = e.target.value;
+        let clearTag = "";
         setInputValue(value);
 
-        const filteredArticles = articles.filter((article) => 
-            article.title.includes(value)
-        );
+        if(value.includes("#")){
+            clearTag = value.replace("#", "").toLowerCase();
+            console.log('clear tag: ' + clearTag);
+        }
 
-        setArticlesResult(filteredArticles);
-        console.log("articlesResult:", filteredArticles);
+        const filteredArticles = articles.filter((article) => article.title.toLowerCase().includes(value.toLowerCase()));
+        const filteredArticlesByTag = articles.filter((article) => article.category.title.toLowerCase().includes(clearTag));
+    
+ 
+        setArticlesResult(value.includes("#") ? filteredArticlesByTag : filteredArticles);
+        // console.log("articlesResult:", filteredArticles);
+        // console.log("articlesResult:", filteredArticlesByTag);
     };
 
     const handleTagClick = (tagName) => {
-        setInputValue(inputValue + tagName);
+        setInputValue(tagName);
+        handleInputChange({ target: { value: tagName } });
     };
+    
 
 
     if (error) return <h2>{error.message}</h2>;
-    if (loading && articles.length === 0) return <h2>Loading...</h2>;
+    if (loading && articles.length === 0) return <Preloader />;
     if (!loading && (!articles || articles.length === 0)) return <h1>No data</h1>;
     
     return (

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { createArticle, getCategories } from "../../store/slices/articles";
 import InputNumberElement from './../../components/InputNumber';
+import { Preloader } from "../../components/Preloader";
 
 function CreateArticle() {
     const [title, setTitle] = useState("");

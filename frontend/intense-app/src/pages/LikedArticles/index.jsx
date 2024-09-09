@@ -6,6 +6,7 @@ import { tags } from "../../tags";
 import { useDispatch, useSelector } from "react-redux";
 import { getLikedArticles } from "../../store/slices/articles";
 import { useEffect, useState } from "react";
+import { Preloader } from "../../components/Preloader";
 
 const MAX_ARTICLES_PER_PAGE = 8;
 
@@ -29,7 +30,7 @@ function LikedArticles() {
     const currentArticles = Array.isArray(likedArticles) ? likedArticles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
     
     if (error) return <h2>{error.message}</h2>;
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <Preloader />;
     if (!loading && (!likedArticles || likedArticles.length === 0)) return <h1>No data</h1>;
 
     return (

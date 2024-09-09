@@ -6,6 +6,7 @@ import PaginationItem from "../../components/Pagination";
 import { tags } from "../../tags";
 import { HomePageArticles } from "../../components/HomeArticles";
 import { getFavoriteArticles } from "../../store/slices/articles";
+import { Preloader } from "../../components/Preloader";
 
 const MAX_ARTICLES_PER_PAGE = 8;
 
@@ -29,7 +30,7 @@ function FavoritesArticles() {
     const currentArticles = Array.isArray(favArticles) ? favArticles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
     
     if (error) return <h2>{error.message}</h2>;
-    if (loading) return <h2>Loading...</h2>;
+    if (loading) return <Preloader />;
     if (!loading && (!favArticles || favArticles.length === 0)) return <h1>No data</h1>;
 
     return (
