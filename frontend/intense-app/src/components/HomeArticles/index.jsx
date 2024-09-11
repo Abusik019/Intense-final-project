@@ -1,14 +1,16 @@
 import styles from "./style.module.css";
 import { NavLink } from 'react-router-dom';
+import emptyGif from '../../assets/empty.gif';
 
 export const HomePageArticles = ({ articles = [] }) => {
-    if (!Array.isArray(articles)) {
-        console.error("articles is not an array", articles);
-        return <p>No articles available</p>;
-    }
 
     if (articles.length === 0) {
-        return <p>No articles available</p>;
+        return (
+            <div className={styles.noArticles}>
+                <img src={emptyGif}/>
+                <p>It's empty here : |</p>
+            </div>
+        )
     }
 
     return (
@@ -25,7 +27,7 @@ export const HomePageArticles = ({ articles = [] }) => {
                             <h1>{article.category.title}</h1>
                             <NavLink to={`/articles/${article.id}`}>{article.title}</NavLink>
                             <h3>
-                                {article.author} • {formattedDate ? formattedDate.join('') : 'N/A'} ({article.time_to_read} read)
+                                {article.author} • {formattedDate ? formattedDate.join('') : 'N/A'} ({article.time_to_read} min read)
                             </h3>
                             <p>{article.desc ? article.desc : ''}</p>
                         </div>

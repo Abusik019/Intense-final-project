@@ -12,11 +12,15 @@ const MAX_ARTICLES_PER_PAGE = 8;
 
 function LikedArticles() {
     const dispatch = useDispatch();
+
     const likedArticles = useSelector((state) => state.articles.list);
     const loading = useSelector((state) => state.articles.loading);
     const error = useSelector((state) => state.articles.error);
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [filterByTag, setFilterByTag] = useState();
+
+    const likedArticlesByTag = likedArticles.filter(article => article.category.title === filterByTag) || [];
 
     useEffect(() => {
         dispatch(getLikedArticles());
@@ -28,6 +32,7 @@ function LikedArticles() {
 
     const startIndex = (currentPage - 1) * MAX_ARTICLES_PER_PAGE;
     const currentArticles = Array.isArray(likedArticles) ? likedArticles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
+    const filterCurrentArticles = Array.isArray(likedArticlesByTag) ? likedArticlesByTag.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
     
     if (error) return <h2>{error.message}</h2>;
     if (loading) return <Preloader />;
@@ -41,14 +46,14 @@ function LikedArticles() {
                     <div className={styles.decorLine}></div>
                 </div>
                 <div className={styles.likedArticlesContent}>
-                    <HomePageArticles articles={currentArticles} />
-                    <Tags tags={tags} />
+                    <HomePageArticles articles={filterByTag ? filterCurrentArticles : currentArticles} />
+                    <Tags setFilterByTag={setFilterByTag} tags={tags} />
                 </div>
             </div>
             <PaginationItem 
                 current={currentPage} 
                 pageSize={MAX_ARTICLES_PER_PAGE} 
-                total={likedArticles.length} 
+                total={filterByTag ? likedArticlesByTag.length : likedArticles.length} 
                 onChange={handlePageChange} 
             />
         </div>

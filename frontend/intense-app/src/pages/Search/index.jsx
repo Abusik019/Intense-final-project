@@ -43,8 +43,6 @@ function Search() {
     
  
         setArticlesResult(value.includes("#") ? filteredArticlesByTag : filteredArticles);
-        // console.log("articlesResult:", filteredArticles);
-        // console.log("articlesResult:", filteredArticlesByTag);
     };
 
     const handleTagClick = (tagName) => {

@@ -63,3 +63,21 @@
     -webkit-line-clamp: 8; 
     -webkit-box-orient: vertical;
 }
+
+.noArticles{
+    width: 800px;
+    min-height: 600px;
+    height: fit-content;
+
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.noArticles > p{
+    font-size: 32px;
+}

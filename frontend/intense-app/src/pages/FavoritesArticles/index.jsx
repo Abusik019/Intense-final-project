@@ -12,12 +12,16 @@ const MAX_ARTICLES_PER_PAGE = 8;
 
 function FavoritesArticles() {
     const dispatch = useDispatch();
+
     const favArticles = useSelector((state) => state.articles.list);
     const loading = useSelector((state) => state.articles.loading);
     const error = useSelector((state) => state.articles.error);
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [filterByTag, setFilterByTag] = useState();
 
+    const favArticlesByTag = favArticles.filter(article => article.category.title === filterByTag) || [];
+    
     useEffect(() => {
         dispatch(getFavoriteArticles());
     }, [dispatch]);
@@ -28,6 +32,7 @@ function FavoritesArticles() {
 
     const startIndex = (currentPage - 1) * MAX_ARTICLES_PER_PAGE;
     const currentArticles = Array.isArray(favArticles) ? favArticles.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
+    const filterCurrentArticles = Array.isArray(favArticlesByTag) ? favArticlesByTag.slice(startIndex, startIndex + MAX_ARTICLES_PER_PAGE) : [];
     
     if (error) return <h2>{error.message}</h2>;
     if (loading) return <Preloader />;
@@ -41,14 +46,14 @@ function FavoritesArticles() {
                     <div className={styles.decorLine}></div>
                 </div>
                 <div className={styles.favoritesArticlesContent}>
-                    <HomePageArticles articles={currentArticles} />
-                    <Tags tags={tags} />
+                    <HomePageArticles articles={filterByTag ? filterCurrentArticles : currentArticles} />
+                    <Tags setFilterByTag={setFilterByTag} tags={tags} />
                 </div>
             </div>
             <PaginationItem 
                 current={currentPage} 
                 pageSize={MAX_ARTICLES_PER_PAGE} 
-                total={favArticles.length} 
+                total={filterByTag ? favArticlesByTag.length : favArticles.length} 
                 onChange={handlePageChange} 
             />
         </div>
