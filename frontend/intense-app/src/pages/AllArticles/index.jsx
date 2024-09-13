@@ -20,7 +20,7 @@ function AllArticles() {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterByTag, setFilterByTag] = useState();
 
-    const articlesByTag = articles.filter(article => article.category.title === filterByTag) || [];
+    const articlesByTag = Array.isArray(articles) ? articles.filter(article => article.category.title === filterByTag) : [];
 
     useEffect(() => {
         dispatch(getArticles());

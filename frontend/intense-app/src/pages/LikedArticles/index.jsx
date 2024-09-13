@@ -20,7 +20,7 @@ function LikedArticles() {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterByTag, setFilterByTag] = useState();
 
-    const likedArticlesByTag = likedArticles.filter(article => article.category.title === filterByTag) || [];
+    const likedArticlesByTag = Array.isArray(likedArticles) ? likedArticles.filter(article => article.category.title === filterByTag) : [];
 
     useEffect(() => {
         dispatch(getLikedArticles());

@@ -20,7 +20,7 @@ function FavoritesArticles() {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterByTag, setFilterByTag] = useState();
 
-    const favArticlesByTag = favArticles.filter(article => article.category.title === filterByTag) || [];
+    const favArticlesByTag = Array.isArray(favArticles) ? favArticles.filter(article => article.category.title === filterByTag) : [];
     
     useEffect(() => {
         dispatch(getFavoriteArticles());

@@ -6,8 +6,8 @@ import toEdit from "../../assets/edit.svg";
 import toLiked from "../../assets/toLiked.svg";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
-import { changeArticle, getArticle, getCategories, getMyInfo } from "../../store/slices/articles";
-import { useParams } from 'react-router-dom';
+import { addToFavoriteArticle, addToLikedArticle, changeArticle, deleteArticle, getArticle, getCategories, getMyInfo } from "../../store/slices/articles";
+import { useNavigate, useParams } from 'react-router-dom';
 import { ArticleMainInfo } from "../../components/ArticleMainInfo";
 import { ChangeArticleMainInfo } from "../../components/ChangeArticleMainInfo";
 import { UploadPhoto } from './../../components/UploadPhoto';
@@ -16,6 +16,7 @@ import { Preloader } from "../../components/Preloader";
 function Article() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const article = useSelector((state) => state.articles.list);
     const my_info = useSelector((state) => state.articles.my_info);
     const categories = useSelector((state) => state.articles.categories);
@@ -33,6 +34,21 @@ function Article() {
             dispatch(getCategories());
         }
     }, [dispatch, id, showSaveBtn]);
+
+    function HandleAddToFavorite(){
+        dispatch(addToFavoriteArticle(id))
+        navigate('/favorites-articles')
+    }
+
+    function HandleAddToLiked(){
+        dispatch(addToLikedArticle(id))
+        navigate('/liked-articles')
+    }
+
+    function HandleDelete(){
+        dispatch(deleteArticle(id));
+        navigate(-1)
+    }
 
     const handleSave = (updatedArticle) => {
         let categoryFound = false;
@@ -97,13 +113,13 @@ function Article() {
                     }
                     <div className={styles.articleActionsWrapper}>
                         <div className={styles.articleActions}>
-                            <button>
+                            <button onClick={HandleAddToFavorite}>
                                 <img src={toFavorite} alt="Favorite" />
                             </button>
-                            <button>
+                            <button onClick={HandleAddToLiked}>
                                 <img src={toLiked} alt="Liked" />
                             </button>
-                            <button>
+                            <button onClick={HandleDelete}>
                                 <img src={toDelete} alt="Delete" />
                             </button>
                             <button onClick={() => setShowSaveBtn(true)}>

@@ -152,7 +152,6 @@ export const getArticle = createAsyncThunk("articles/getArticle", async (id) => 
 });
 
 export const changeArticle = createAsyncThunk('articles/changeArticle', async ({ article, articleID }) => {
-    console.log(article);
     const formData = new FormData();
 
     formData.append('title', article.title);
@@ -176,6 +175,48 @@ export const changeArticle = createAsyncThunk('articles/changeArticle', async ({
     }
 
     return response.data;
+});
+
+export const addToFavoriteArticle = createAsyncThunk("articles/addToFavoriteArticle", async (id) => {
+    const response = await axios.post(`${API_URL}/v1/posts/${id}/favorite/`, {}, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    });
+
+    if (response.status !== 200) {
+        throw "Ошибка при добавлении поста в избранные";
+    }
+
+    return await response.data;
+});
+
+export const addToLikedArticle = createAsyncThunk("articles/addToLikedArticle", async (id) => {
+    const response = await axios.post(`${API_URL}/v1/posts/${id}/like/`, {}, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    });
+
+    if (response.status !== 200) {
+        throw "Ошибка при добавлении поста в лайкнутые";
+    }
+
+    return await response.data;
+});
+
+export const deleteArticle = createAsyncThunk("articles/deleteArticle", async (id) => {
+    const response = await axios.delete(`${API_URL}/v1/posts/${id}/`, {
+        headers: {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+    });
+
+    if (response.status !== 200) {
+        throw "Ошибка при удалении поста";
+    }
+
+    return await response.data;
 });
 
 
@@ -365,6 +406,51 @@ const articlesSlice = createSlice({
         });
 
         builder.addCase(changeArticle.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // addToFavoriteArticle
+        builder.addCase(addToFavoriteArticle.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(addToFavoriteArticle.fulfilled, (state) => {
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(addToFavoriteArticle.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // addToLikedArticle
+        builder.addCase(addToLikedArticle.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(addToLikedArticle.fulfilled, (state) => {
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(addToLikedArticle.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+        });
+
+        // deleteArticle
+        builder.addCase(deleteArticle.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(deleteArticle.fulfilled, (state) => {
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(deleteArticle.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
         });
