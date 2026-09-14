@@ -1,1 +1,1 @@
-Intense IT project
+My first project in React
